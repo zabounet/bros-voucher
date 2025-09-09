@@ -14,7 +14,8 @@
         "ts-node": "^10.9.2"
     },
     "scripts": {
-        "server": "nodemon server.js"
+        "server": "nodemon server.js",
+        "start": "node server.js"
     },
     "devDependencies": {
         "@babel/preset-typescript": "^7.23.3",
