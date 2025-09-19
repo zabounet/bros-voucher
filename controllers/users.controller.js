@@ -22,6 +22,8 @@ export const sendVoucher = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
         }
+        console.log(user.Vouchers);
+        
         if (!user.Vouchers[voucherId]) {
             user.Vouchers[2].Quantite += 1;
         } else {

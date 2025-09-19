@@ -1,5 +1,4 @@
 import mongoConnect from 'mongoose';
-dotenv.config();
 
 connectDB().catch(err => console.log(err));
 
