@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 export const login = async (req, res) => {
     console.log("Login attempt for user:", req.body.Prenom);
-    const post = await UserModel.findOne({Prenom: req.body.Prenom});
+    const post = await UserModel.findOne({ Prenom: req.body.Prenom });
     if (!post) {
         return res.status(404).json({ message: 'Utilisateur non trouvé' });
     }
@@ -22,8 +22,11 @@ export const sendVoucher = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
         }
-
-        user.Vouchers[voucherId].Quantite += 1;
+        if (!user.Vouchers[voucherId]) {
+            user.Vouchers[2].Quantite += 1;
+        } else {
+            user.Vouchers[voucherId].Quantite += 1;
+        }
         await user.save();
 
         res.status(200).json({ message: 'Voucher envoyé avec succès' });
@@ -35,7 +38,7 @@ export const sendVoucher = async (req, res) => {
 
 export const redeemVoucher = async (req, res) => {
     const { Prenom, voucherId } = req.body;
-    
+
     try {
         const user = await UserModel.findOne({ Prenom });
         if (!user) {
