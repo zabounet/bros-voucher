@@ -6,7 +6,7 @@ import usersRoute from "./routes/users.route.js";
 
 import nodemailer from 'nodemailer';
 import { google } from 'googleapis';
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 const app = express();
 
 //Connect to db
